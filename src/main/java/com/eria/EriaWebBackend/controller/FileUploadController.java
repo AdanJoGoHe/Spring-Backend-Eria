@@ -1,12 +1,11 @@
 package com.eria.EriaWebBackend.controller;
 
+import com.eria.EriaWebBackend.impl.StorageFileNotFoundException;
 import com.eria.EriaWebBackend.models.FilesModel;
+import com.eria.EriaWebBackend.service.StorageService;
 import java.io.File;
 import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -21,10 +20,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
+@RestController
 @Log4j2
 public class FileUploadController
 {
@@ -67,7 +67,6 @@ public class FileUploadController
   {
     storageService.store(file);
     storageService.storeThumbnail(thumbnail, file.getOriginalFilename());
-    log.error("Upload String Name is : " + name);
     redirectAttributes.addFlashAttribute("message",
         "You successfully uploaded " + file.getOriginalFilename() + "!");
     return ResponseEntity.status(HttpStatus.OK).body(file.getOriginalFilename());

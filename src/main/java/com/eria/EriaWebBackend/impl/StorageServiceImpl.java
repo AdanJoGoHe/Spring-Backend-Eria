@@ -1,23 +1,18 @@
-package com.eria.EriaWebBackend;
+package com.eria.EriaWebBackend.impl;
 
-import com.eria.EriaWebBackend.controller.StorageService;
+import com.eria.EriaWebBackend.service.StorageService;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.extern.log4j.Log4j2;
-import org.apache.tomcat.jni.Directory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -75,7 +70,7 @@ public class StorageServiceImpl implements StorageService {
   public Resource load(String filename) {
     try {
       Path file = root.resolve("C:\\Test\\" + filename);
-      log.debug("Soy un debug :3 "+file.toString());
+      log.debug("Debug Point "+file.toString());
       Resource resource = new UrlResource(file.toUri());
       if (resource.exists() || resource.isReadable()) {
         return resource;

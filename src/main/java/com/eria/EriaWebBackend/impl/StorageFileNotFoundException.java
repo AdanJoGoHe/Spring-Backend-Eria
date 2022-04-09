@@ -1,4 +1,4 @@
-package com.eria.EriaWebBackend.controller;
+package com.eria.EriaWebBackend.impl;
 
 public class StorageFileNotFoundException
     extends Throwable {

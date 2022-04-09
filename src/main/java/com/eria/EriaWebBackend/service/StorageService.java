@@ -1,4 +1,4 @@
-package com.eria.EriaWebBackend.controller;
+package com.eria.EriaWebBackend.service;
 
 import java.nio.file.Path;
 import java.util.stream.Stream;
