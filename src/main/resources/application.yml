@@ -15,9 +15,9 @@ spring:
       client:
         registration:
           discord:
-            clientName: Serex
-            client-id: 961834104670810132
-            client-secret: f1LnjDbDCtFPoHLRq5kRjb0tRy4Vr7dQ
+            clientName: {}
+            client-id: {}
+            client-secret: {}
             clientAuthenticationMethod: post
             authorizationGrantType: authorization_code
             redirectUri: "{baseUrl}/login/oauth2/code/discord"
